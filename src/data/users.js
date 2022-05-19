@@ -2,31 +2,31 @@ export const users = [
    {
       name: 'Dawid Słowik',
       attendance: '39%',
-      average: 2.3
+      average: '2.3'
    },
    {
       name: 'Kamil Nowak',
       attendance: '40%',
-      average: 3.5
+      average: '3.5'
    },
    {
       name: 'Karol Pazdan',
       attendance: '89%',
-      average: 4.5
+      average: '4.5'
    },
    {
-      name: 'Dawid Słowik',
+      name: 'Dawid SLowik',
       attendance: '39%',
-      average: 2.3
+      average: '2.3'
    },
    {
-      name: 'Kamil Nowak',
+      name: 'Kamil Kowalsko',
       attendance: '40%',
-      average: 3.5
+      average: '3.5'
    },
    {
-      name: 'Karol Pazdan',
+      name: 'Karol Krol',
       attendance: '89%',
-      average: 4.5
+      average: '4.5'
    }
 ]
