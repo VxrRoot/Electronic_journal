@@ -1,7 +1,8 @@
 interface IUsersListItemModel {
    name: string;
-   average: number;
+   average: string;
    attendance: string;
+   deleteUser: (name: string) => void;
 }
 
 export type UsersListItemModel = IUsersListItemModel;

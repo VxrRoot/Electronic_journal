@@ -6,9 +6,12 @@ import {ReactComponent as DeleteIcon} from 'assets/icons/delete-icon.svg';
 // Styled Components
 import {StyledButton} from './ButtonDelete.styles';
 
-const Button: FC = () => {
+// Models
+import {ButtonDeleteModel} from './ButtonDelete.model';
+
+const Button: FC<ButtonDeleteModel> = ({onClick}) => {
    return (
-      <StyledButton>
+      <StyledButton onClick={onClick}>
          <DeleteIcon />
       </StyledButton>
    )
