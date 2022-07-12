@@ -44,7 +44,7 @@ export const StyledLogo = styled.div`
 `;
 
 export const StyledMain = styled.div`
-  width: calc(100% - 130px);
+   width: calc(100% - 130px);
 `;
 
 interface IMainTemplate {
@@ -71,7 +71,9 @@ const MainTemplate: FC<IMainTemplate> = ({children, navItems}) => {
                ))}
             </nav>
          </StyledNav>
-         <StyledMain>{children}</StyledMain>
+         <StyledMain>
+            {children}
+         </StyledMain>
       </Wrapper>
    )
 }
