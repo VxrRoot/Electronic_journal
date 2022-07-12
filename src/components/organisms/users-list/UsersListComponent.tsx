@@ -1,21 +1,24 @@
-import React, {FC, useEffect, useState} from 'react';
+import {FC, useContext} from 'react';
+
+// Context
+import {UsersContext} from 'providers/UsersProvider.provider';
 
 // Styled Components
-import {Wrapper, StyledList, StyledTitle} from './UsersList.styles';
-
-// Data
-import {navItemsMainTemplate} from '../../../data/navItems';
+import {Wrapper, StyledList, StyledTitle, OuterWrapper} from './UsersList.styles';
 
 // Components
 import UsersListItem from 'components/molecules/users-list-item/UsersListItem.component';
-import MainTemplate from '../../templates/main-template/MainTemplate.component';
 
 // Model
 import {UsersListModel} from './UsersList.model';
 
-const UsersListComponent: FC<UsersListModel> = ({users, deleteUser}) => {
+const UsersListComponent: FC<UsersListModel> = () => {
+   const {
+      deleteUser,
+      users
+   } = useContext(UsersContext);
    return (
-      <MainTemplate navItems={navItemsMainTemplate}>
+      <OuterWrapper>
          <Wrapper>
             <StyledTitle>Students List</StyledTitle>
             <StyledList>
@@ -30,7 +33,7 @@ const UsersListComponent: FC<UsersListModel> = ({users, deleteUser}) => {
                ))}
             </StyledList>
          </Wrapper>
-      </MainTemplate>
+      </OuterWrapper>
    );
 }
 

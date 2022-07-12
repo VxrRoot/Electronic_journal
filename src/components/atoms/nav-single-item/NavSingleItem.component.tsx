@@ -1,8 +1,8 @@
 import {FC} from 'react'
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
   margin: 10px 0;
   text-decoration: none;
   color: ${({theme}) => theme.colors.darkGrey};
@@ -10,6 +10,26 @@ export const StyledLink = styled(Link)`
   font-size: ${({theme}) => theme.fontSize.m};
   text-align: right;
   padding: 0 24px;
+  position: relative;
+
+  &.active {
+     &::after {
+        opacity: 1;
+     }
+  }
+
+  &::after {
+      content: "";
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+      position: absolute;
+      width: 18px;
+      height: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: ${({theme}) => theme.colors.darkPurple};
+      right: 0;
+   }
 `
 
 interface INavSingleItem {
@@ -20,7 +40,10 @@ interface INavSingleItem {
 
 const NavSingleItem: FC<INavSingleItem> = ({name, url,isActive}) => {
    return (
-      <StyledLink to={url}>
+      <StyledLink 
+         className={(navData) => navData.isActive ? "active" : "" } 
+         to={url}
+      >
          {name}
       </StyledLink>
    )
