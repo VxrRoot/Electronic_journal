@@ -2,16 +2,13 @@ import
    React,
    {
       FC,
-      useContext,
-      useState
+      useContext,  
+      useReducer
 } from 'react';
 
 // Components
 import FormField from '../../components/molecules/form-field/FormField.component';
 import ButtonFunctional from '../../components/atoms/button-functional/ButtonFunctional.component';
-
-// context
-import {UsersContext} from 'providers/UsersProvider.provider';
 
 // Data
 import {navItemsMainTemplate} from '../../data/navItems';
@@ -19,45 +16,23 @@ import {navItemsMainTemplate} from '../../data/navItems';
 // Styled Components
 import {Wrapper, StyledTitle} from './AddUser.styles';
 
+// Hooks
+import UseForm from 'views/add-user/UseAddUser.hook';
+
 // Templates
 import MainTemplate from '../../components/templates/main-template/MainTemplate.component';
 
 // Model
 import {AddUserModel} from './AddUser.model';
 
+
 const AddUser: FC<AddUserModel> = () => {
 
-   const initialFormState = {
-      name: '',
-      average: '',
-      attendance: ''
-   }
-
-   const [formValues, setFormValues] = useState(initialFormState)
-
-   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setFormValues({
-         ...formValues,
-         [e.target.name]: e.target.value,
-      })
-   }
-
    const {
-       handleSubmitUser
-   } = useContext(UsersContext)
-
-   const handleAddUser = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      const newUser = {
-         name: formValues.name,
-         attendance: formValues.attendance,
-         average: formValues.average
-      }
-
-      handleSubmitUser(newUser)
-
-      setFormValues(initialFormState)
-   }
+      formValues,
+      handleAddUser,
+      handleInputChange
+   } = UseForm();
 
    return (
       <MainTemplate navItems={navItemsMainTemplate}>
