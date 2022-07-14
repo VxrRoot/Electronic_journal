@@ -1,10 +1,9 @@
 import {
    createContext,
-   useState
+   useState,
+   useEffect
 } from 'react'
-
-// Data
-import {users as usersData} from '../data/users';
+import axios from 'axios';
 
 interface IUser {
    name: string;
@@ -26,7 +25,13 @@ export const UsersContext = createContext<usersContextInterface>({
 
  const UsersProvider = ({children}: {children: JSX.Element}) => {
 
-   const [users, setUsers] = useState<IUser[]>(usersData);
+   const [users, setUsers] = useState<IUser[]>([]);
+   
+   useEffect( () => {
+      axios.get('/students')
+         .then(({data}) => setUsers(data.students))
+         .catch(err => err)
+   }, [])
    
    const deleteUser = (name: string) => {
       const filtredUsers = users.filter(user => user.name !== name);
