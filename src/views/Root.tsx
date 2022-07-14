@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 import {
    BrowserRouter,
-      Routes,
-      Route,
-} from "react-router-dom";
+   Routes,
+   Route,
+   Navigate
+} from 'react-router-dom';
 
 // Global Styles
 import {GlobalStyle} from '../styles/GlobalStyles';
 import {ThemeProvider} from 'styled-components';
 import {theme} from 'styles/theme';
-
-// Context
-import UsersProvider from 'providers/UsersProvider.provider';
 
 // Views
 import Dashboard from './dashboard/Dashboard.view';
@@ -29,16 +27,18 @@ const Wrapper = styled.div`
 `;
 
 const Root = () => {
-
    return (
       <BrowserRouter>
          <ThemeProvider theme={theme}>
             <GlobalStyle />
-            <UsersProvider>
                <Wrapper>
                   <Routes>
                      <Route
                         path="/"
+                        element={<Navigate to="/group/A" />}
+                     />
+                     <Route
+                        path="/group/:id"
                         element={<Dashboard />}
                      />
                      <Route
@@ -47,7 +47,6 @@ const Root = () => {
                      />
                   </Routes>
                </Wrapper>
-            </UsersProvider>
          </ThemeProvider>
       </BrowserRouter>
   );

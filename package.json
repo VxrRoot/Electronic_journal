@@ -51,6 +51,10 @@
     "@types/styled-components": "^5.1.25",
     "add": "^2.0.6",
     "axios-mock-adapter": "^1.21.1",
+    "msw": "^0.28.1",
     "styled-components": "^5.3.5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
