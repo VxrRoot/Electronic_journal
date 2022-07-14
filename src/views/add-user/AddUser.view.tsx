@@ -35,7 +35,7 @@ const AddUser: FC<AddUserModel> = () => {
    } = UseForm();
 
    return (
-      <MainTemplate navItems={navItemsMainTemplate}>
+      <MainTemplate>
          <Wrapper
             as="form"
             onSubmit={handleAddUser}
